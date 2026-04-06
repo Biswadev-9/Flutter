@@ -1,6 +1,6 @@
 # 📱 Flutter Custom Layout App
 
-This is my simple Flutter UI layout project  for academic submission.
+This is my simple Flutter UI layout project for academic submission.
 
 ## 🎯 Features
 - Custom App Bar with dynamic date
@@ -26,5 +26,3 @@ my_layout_app/
 ├── pubspec.yaml
 └── README.md
 
-## 👨‍💻 Author
-**Biswadev Biswas**
