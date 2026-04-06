@@ -9,7 +9,8 @@ This is a simple Flutter UI layout project.
 - Circular Avatar
 
 ## Screenshot
-(Add your screenshot here)
+ 
+<img width="491" height="733" alt="image" src="https://github.com/user-attachments/assets/ad91d062-40dd-4806-8fdf-8babc65b9752" />
 
 ## Author
 Biswadev
