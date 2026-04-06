@@ -1,16 +1,29 @@
-# Flutter Custom Layout
+# 📱 Flutter Custom Layout App
 
-This is a simple Flutter UI layout project.
+This is my simple Flutter UI layout project  for academic submission.
 
-## Features
-- Custom AppBar
-- Colored Boxes
-- Registration Card
-- Circular Avatar
+## 🎯 Features
+- Custom App Bar with dynamic date
+- Three colored info boxes (Roll, Blood Group, District)
+- Stylish registration card
+- Circular nickname avatar
+- Clean and responsive UI
 
-## Screenshot
- 
-<img width="491" height="733" alt="image" src="https://github.com/user-attachments/assets/ad91d062-40dd-4806-8fdf-8babc65b9752" />
+## 🛠️ Technologies Used
+- Flutter
+- Dart
 
-## Author
-Biswadev
+## 📸 Screenshot
+
+![App Screenshot](screenshot.png)
+
+## 📂 Project Structure
+my_layout_app/
+├── lib/
+│ └── main.dart
+├── pubspec.yaml
+└── README.md
+
+
+## 👨‍💻 Author
+**Biswadev Biswas**
