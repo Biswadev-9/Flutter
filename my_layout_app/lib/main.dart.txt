@@ -1,0 +1,224 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.light,
+  ));
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Custom Layout',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: const Color(0xFFFFF0F5),
+      ),
+      home: const MyLayoutPage(),
+    );
+  }
+}
+
+class MyLayoutPage extends StatelessWidget {
+  const MyLayoutPage({super.key});
+
+  final String roll = "22CSE026";
+  final String registration = "110-026-22";
+  final String district = "Barishal";
+  final String bloodGroup = "O+";
+  final String nickname = "Biswadev";
+
+  String getFormattedDate() {
+    final now = DateTime.now();
+    return "${now.day} ${_monthName(now.month)} ${now.year}";
+  }
+
+  String _monthName(int month) {
+    const months = [
+      "",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+    return months[month];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final screen = MediaQuery.of(context).size;
+    final circleSize = screen.width * 0.25;
+
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Custom App Bar
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              color: const Color(0xFF00FF80),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const Icon(Icons.arrow_back, color: Colors.white),
+                      const SizedBox(width: 12),
+                      Text(
+                        getFormattedDate(),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: const [
+                      Icon(Icons.signal_cellular_alt, color: Colors.white, size: 18),
+                      SizedBox(width: 4),
+                      Icon(Icons.wifi, color: Colors.white, size: 18),
+                      SizedBox(width: 4),
+                      Icon(Icons.battery_full, color: Colors.white, size: 18),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            Container(height: 2, color: Colors.white),
+
+            Expanded(
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      // Top Boxes
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: _buildBox(roll, Colors.red),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: _buildBox(bloodGroup, Colors.green),
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: _buildBox(district, Colors.blue),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 40),
+
+                      // Registration Box
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Container(
+                            width: screen.width * 0.75,
+                            padding: const EdgeInsets.symmetric(vertical: 25),
+                            decoration: const BoxDecoration(
+                              color: Color(0xFFFFC107),
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(40),
+                                bottomLeft: Radius.circular(40),
+                                topRight: Radius.circular(20),
+                                bottomRight: Radius.circular(20),
+                              ),
+                            ),
+                            alignment: Alignment.center,
+                            child: Text(
+                              registration,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  // Bottom Circle
+                  Positioned(
+                    bottom: 30,
+                    right: 20,
+                    child: Container(
+                      width: circleSize,
+                      height: circleSize,
+                      decoration: const BoxDecoration(
+                        color: Colors.pink,
+                        shape: BoxShape.circle,
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        nickname,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildBox(String text, Color color) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 25),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0x1A000000), // Changed from Colors.black.withOpacity(0.1)
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          )
+        ],
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        text,
+        style: const TextStyle(color: Colors.white, fontSize: 16),
+      ),
+    );
+  }
+}

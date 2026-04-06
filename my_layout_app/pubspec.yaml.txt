@@ -1,0 +1,10 @@
+name: my_layout_app
+description: A Flutter UI layout project
+version: 1.0.0
+
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
