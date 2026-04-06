@@ -17,13 +17,14 @@ This is my simple Flutter UI layout project  for academic submission.
 
 ![App Screenshot](screenshot.png)
 
-## 📂 Project Structure
+## 📁 Project Structure
+
+```text
 my_layout_app/
 ├── lib/
-│ └── main.dart
+│   └── main.dart
 ├── pubspec.yaml
 └── README.md
-
 
 ## 👨‍💻 Author
 **Biswadev Biswas**
